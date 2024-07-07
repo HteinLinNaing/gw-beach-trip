@@ -1,0 +1,30 @@
+.photo-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.gallery-photo {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.delete-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.288);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.privacy-notice {
+    color: #ff0000;
+    /* Red color to draw attention */
+    font-size: 14px;
+    margin-left: 10px;
+}

@@ -1,0 +1,72 @@
+.home-page {
+    padding-top: 56px;
+    /* Height of Navbar (adjust as per your Navbar's height) */
+    min-height: calc(100vh - 56px);
+    /* 100vh minus Navbar height */
+    background-image: url('../../public/images/background.jpg');
+    /* Adjust the path as necessary */
+    background-size: cover;
+    background-position: bottom;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    color: #fafafa;
+    padding-bottom: 100px;
+}
+
+.title-text {
+    font-size: 96px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Adjust opacity as needed */
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    /* Ensure content is above overlay */
+    text-align: center;
+    color: white;
+    /* Adjust text color for better visibility */
+    padding: 20px;
+}
+
+
+/* Media query for laptops/desktops */
+@media (min-width: 768px) {
+    .flip-countdown .flip-countdown-piece .flip-countdown-card .flip-countdown-card-sec {
+        font-size: 8vw;
+        /* Adjust font size for larger screens */
+    }
+
+    .flip-countdown .flip-countdown-piece .flip-countdown-title {
+        font-size: 2vw;
+    }
+
+    .title-text {
+        font-size: 83px;
+    }
+}
+
+/* Media query for mobile devices */
+@media (max-width: 767px) {
+    .flip-countdown .flip-countdown-piece .flip-countdown-card .flip-countdown-card-sec {
+        font-size: 18vw;
+        /* Adjust font size for smaller screens */
+    }
+
+    .flip-countdown .flip-countdown-piece .flip-countdown-title {
+        font-size: 5vw;
+    }
+
+    .title-text {
+        font-size: 55px;
+    }
+}
