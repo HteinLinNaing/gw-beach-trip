@@ -15,7 +15,7 @@ const PhotoGallery = () => {
 
     const fetchPhotos = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/photos');
+            const response = await axios.get('https://gw-beach-trip-backend-5wjg.vercel.app/photos');
             setPhotos(response.data.map(photo => ({
                 src: photo.base64,
                 width: photo.width,
@@ -39,7 +39,7 @@ const PhotoGallery = () => {
                 base64
             };
         }));
-        await Promise.all(newPhotos.map(photo => axios.post('http://localhost:5000/photos', photo)));
+        await Promise.all(newPhotos.map(photo => axios.post('https://gw-beach-trip-backend-5wjg.vercel.app/photos', photo)));
         fetchPhotos();
 
         if (fileInputRef.current) {
@@ -87,7 +87,7 @@ const PhotoGallery = () => {
         const confirmDelete = window.confirm("Are you sure you want to delete this photo?");
         if (confirmDelete) {
             try {
-                await axios.delete(`http://localhost:5000/photos/${photoId}`);
+                await axios.delete(`https://gw-beach-trip-backend-5wjg.vercel.app/photos/${photoId}`);
                 fetchPhotos();
             } catch (error) {
                 console.error('Error deleting photo:', error);
