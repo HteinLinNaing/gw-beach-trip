@@ -17,7 +17,7 @@ const Countdown = () => {
 			titlePosition='top' // Options (Default: top): top, bottom.
 			size='large' // Options (Default: medium): large, medium, small, extra-small.
 			endAtZero
-			endAt={'2024-07-19 00:00:00'} // Date/Time
+			endAt={'2024-07-19 05:00:00'} // Date/Time
 			onTimeUp={() => console.log("Time's up ⏳")}
 		/>
 	);
