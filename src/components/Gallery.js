@@ -3,6 +3,7 @@ import Gallery from 'react-photo-gallery';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import { Form } from 'react-bootstrap';
+import Compressor from 'compressorjs';
 import './Gallery.css';
 
 const PhotoGallery = () => {
@@ -29,7 +30,8 @@ const PhotoGallery = () => {
 
     const handleUpload = async (event) => {
         const files = Array.from(event.target.files);
-        const newPhotos = await Promise.all(files.map(async file => {
+        const compressedFiles = await Promise.all(files.map(file => compressFile(file)));
+        const newPhotos = await Promise.all(compressedFiles.map(async file => {
             const base64 = await convertToBase64(file);
             const dimension = await getPhotoDimension(file);
             return {
@@ -45,6 +47,21 @@ const PhotoGallery = () => {
         if (fileInputRef.current) {
             fileInputRef.current.value = '';
         }
+    };
+
+    const compressFile = (file) => {
+        return new Promise((resolve, reject) => {
+            new Compressor(file, {
+                quality: 0.5, // Adjust the quality as needed (0 to 1)
+                success(result) {
+                    resolve(result);
+                },
+                error(err) {
+                    console.error('Error compressing file:', err);
+                    reject(err);
+                }
+            });
+        });
     };
 
     const getPhotoDimension = (file) => {
@@ -123,10 +140,8 @@ const PhotoGallery = () => {
                     </span>
                 </Form.Label>
                 <Form.Control type="file" ref={fileInputRef} accept="image/*" multiple onChange={handleUpload} />
-
             </Form.Group>
             <Gallery photos={photos} renderImage={imageRenderer} />
-            <p></p>
         </div>
     );
 };
